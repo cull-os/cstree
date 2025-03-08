@@ -3,15 +3,15 @@
 use core::fmt;
 use std::sync::Arc as StdArc;
 
-use fxhash::FxBuildHasher as Hasher;
 use indexmap::IndexSet;
+use rustc_hash::FxBuildHasher;
 
 use super::{InternKey, Interner, Resolver, TokenKey};
 
 /// The default [`Interner`] used to deduplicate green token strings.
 #[derive(Debug)]
 pub struct TokenInterner {
-    id_set: IndexSet<String, Hasher>,
+    id_set: IndexSet<String, FxBuildHasher>,
 }
 
 impl TokenInterner {
